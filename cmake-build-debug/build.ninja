@@ -61,6 +61,12 @@ build CMakeFiles/LexicalDFA.dir/Lexical.cpp.obj: CXX_COMPILER__LexicalDFA_Debug 
   OBJECT_DIR = CMakeFiles\LexicalDFA.dir
   OBJECT_FILE_DIR = CMakeFiles\LexicalDFA.dir
 
+build CMakeFiles/LexicalDFA.dir/Grammar.cpp.obj: CXX_COMPILER__LexicalDFA_Debug C$:/Code/C++/LexicalDFA/Grammar.cpp || cmake_object_order_depends_target_LexicalDFA
+  DEP_FILE = CMakeFiles\LexicalDFA.dir\Grammar.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\LexicalDFA.dir
+  OBJECT_FILE_DIR = CMakeFiles\LexicalDFA.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target LexicalDFA
@@ -69,7 +75,7 @@ build CMakeFiles/LexicalDFA.dir/Lexical.cpp.obj: CXX_COMPILER__LexicalDFA_Debug 
 #############################################
 # Link the executable LexicalDFA.exe
 
-build LexicalDFA.exe: CXX_EXECUTABLE_LINKER__LexicalDFA_Debug CMakeFiles/LexicalDFA.dir/main.cpp.obj CMakeFiles/LexicalDFA.dir/Lexical.cpp.obj
+build LexicalDFA.exe: CXX_EXECUTABLE_LINKER__LexicalDFA_Debug CMakeFiles/LexicalDFA.dir/main.cpp.obj CMakeFiles/LexicalDFA.dir/Lexical.cpp.obj CMakeFiles/LexicalDFA.dir/Grammar.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\LexicalDFA.dir

@@ -7,11 +7,19 @@
 #include<string>
 #include<unordered_map>
 #include<fstream>
+#include<vector>
 using namespace std;
 
 enum State{
     START,INNUM,INID,INEQ,INNEQ,INLESS,INLGREAT,
     LCOMMENT,RCOMMENT,INCOMMENT,DONE
+};
+
+enum Type{
+    reserveWord,     //保留字
+    identifierWord,   //特殊符号
+    IDTYPE,     //标识符
+    NUMTYPE    //常量
 };
 
 class Lexical {
@@ -29,10 +37,11 @@ public:
     ifstream f2;   //读取文件行的指针
     int row;  //读到文件的第几行了
 
+    vector<pair<string,Type>>  storage;
+
     Lexical(string fileName); //构造函数
     void changeState(char c);
     void readFile();
-
 };
 
 

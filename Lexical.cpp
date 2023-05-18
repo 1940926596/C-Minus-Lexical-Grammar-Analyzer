@@ -6,7 +6,7 @@
 #include "Lexical.h"
 
 void operateReserve(Lexical* lexical){
-    //处理保留字
+    //处理 保留字 关键字
     string reserve[]={"if","then","else","end","repeat","until"
             ,"read","white","int","double","float","void","return"};
 
@@ -20,6 +20,7 @@ void operateReserve(Lexical* lexical){
 }
 
 void operateIdentifier(Lexical* lexical){
+    //运算符
     string identifier[]={"+","-","=",">=","<=",
                          "*","/","!=","{","}",
                          "[","]","(",")",";",","};
@@ -179,27 +180,32 @@ void Lexical::changeState(const char c) {
 
     //DONE有点区别，注意
     if(state==DONE){
+
         if(input[0]!=' '&&input[0]!='\t'&&input[0]!='\n'&&input[0]!='\r'){
             if(reserveWords.count(input)!=0){
+                storage.push_back(pair<string,Type>(input,reserveWord));
                 cout<<'\t'<<row<<':'<<' '<<"reserved word: "<<input<<endl;
             }
             else if(identifierWords.count(input)!=0){
+                storage.push_back(pair<string,Type>(input,identifierWord));
                 cout<<'\t'<<row<<':'<<' '<<"identifier word: "<<input<<endl;
             }
             else if(input[0]>='0'&&input[0]<='9'){
+                storage.push_back(pair<string,Type>(input,NUMTYPE));
                 cout<<'\t'<<row<<':'<<' '<<"NUM: "<<input<<endl;
             }
             else if((input[0]>='a'&&input[0]<='z')||(input[0]>='A'&&input[0]<='Z')){
+                storage.push_back(pair<string,Type>(input,IDTYPE));
                 cout<<'\t'<<row<<':'<<' '<<"ID: "<<input<<endl;
             }else{
                 cout<<'\t'<<row<<':'<<' '<<input<<endl;
             }
-
         }
-        //if(input.size()==1&&input[0]=='\n')cout<<input;
+
         input="";
         state=START;
     }
+
 }
 
 void Lexical::readFile() {
@@ -220,5 +226,6 @@ void Lexical::readFile() {
             cout<<row<<": "<<s<<endl;
         }
     }
+
 
 }

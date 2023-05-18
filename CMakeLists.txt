@@ -3,4 +3,4 @@ project(LexicalDFA)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(LexicalDFA main.cpp Lexical.cpp)
+add_executable(LexicalDFA main.cpp Lexical.cpp Grammar.cpp)

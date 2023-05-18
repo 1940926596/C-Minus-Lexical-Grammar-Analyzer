@@ -6,13 +6,29 @@
 #define LEXICALDFA_GRAMMAR_H
 
 #include<string>
-#include<unordered_map>
-#include<fstream>
+#include<iostream>
+#include<vector>
+#include"Lexical.h"
 
 using namespace std;
 
-class Grammar{
+enum NonTerminator{
+    PROGRAM, //源程序，开始符号 （终结符，非终结符，产生式，开始符号）
+    DECLIST,
+    TYPE,
+    STLIST,
+    DECLISTN,
+    STLISTN
+};
 
+
+class Grammar{
+public:
+    Grammar();
+    Grammar(vector<pair<string,Type>> storage);
+    void procedurePROGRAM(string token);
+
+    string getNextToken();
 };
 
 

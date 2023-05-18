@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Lexical.h"
+#include "Grammar.h"
 
 int main() {
     string fileName="C:\\Code\\C++\\LexicalDFA\\test.text";
@@ -14,6 +15,9 @@ int main() {
             return -1;
         }
     }
+
+    Grammar grammar(lexical.storage);
+
 
     return 0;
 }
