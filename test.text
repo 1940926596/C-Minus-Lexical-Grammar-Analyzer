@@ -1,14 +1,11 @@
-/*计算最大公约数*/
-int gcd(int u,int v)
-{
-	if(v==0)return u;
-	else return gcd(v,u-u/v*v);
-}
-
 void main(void)
 {
 	int x;int y;
-	x=input();
-	y=intput();
-	output(gcd(x,y));
+
+{
+int x;int y;
+x=1;
+x=2;
+}
+
 }

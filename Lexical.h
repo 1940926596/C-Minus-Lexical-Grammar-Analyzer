@@ -19,7 +19,8 @@ enum Type{
     reserveWord,     //保留字
     identifierWord,   //特殊符号
     IDTYPE,     //标识符
-    NUMTYPE    //常量
+    NUMTYPE,    //常量
+    END
 };
 
 class Lexical {

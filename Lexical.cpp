@@ -21,7 +21,7 @@ void operateReserve(Lexical* lexical){
 
 void operateIdentifier(Lexical* lexical){
     //运算符
-    string identifier[]={"+","-","=",">=","<=",
+    string identifier[]={"+","-","=",">=","<=","==",
                          "*","/","!=","{","}",
                          "[","]","(",")",";",","};
 
@@ -197,7 +197,8 @@ void Lexical::changeState(const char c) {
             else if((input[0]>='a'&&input[0]<='z')||(input[0]>='A'&&input[0]<='Z')){
                 storage.push_back(pair<string,Type>(input,IDTYPE));
                 cout<<'\t'<<row<<':'<<' '<<"ID: "<<input<<endl;
-            }else{
+            }
+            else{
                 cout<<'\t'<<row<<':'<<' '<<input<<endl;
             }
         }
