@@ -59,6 +59,11 @@ TreeNode *Grammar::program(int layer) {
     TreeNode* node = new TreeNode("program",layer);
     TreeNode *pNode = declaration_list(layer + 1);
     node->children.push_back(pNode);
+    const pair<string, Type> &token = getNextToken();
+    if(token.second!=END){
+        error();
+        exit(1);
+    }
     return node;
 }
 
@@ -461,7 +466,9 @@ TreeNode *Grammar::return_stmt(int layer) {
             ;
         }else{
             location--;
+            //const pair<string, Type> &token1 = getNextToken();
             TreeNode *pNode = expression(layer + 1);
+
             if(pNode->error){
                 node->error= true;
             }else{
@@ -516,6 +523,14 @@ TreeNode *Grammar::var(int layer) {
 
     const pair<string, Type> &token = getNextToken();
     if(token.second==IDTYPE){
+        const pair<string, Type> &pair1 = getNextToken();
+        if(pair1.first!="="){
+            location-=2;
+            node->error= true;
+            return node;
+        }else{
+            location--;
+        }
         TreeNode *pNode = new TreeNode("ID", layer + 1);
         pNode->value=token.first;
         node->children.push_back(pNode);
@@ -603,10 +618,10 @@ TreeNode *Grammar::additive_expression_(int layer) {
             node->children.push_back(pTreeNode);
             node->children.push_back(additiveExpression);
         }
-
         return node;
     }
-    
+
+    return node;
 }
 
 TreeNode * Grammar::addop(int layer) {
@@ -685,8 +700,9 @@ TreeNode * Grammar::factor(int layer) {
 
     TreeNode *pNode = call(layer + 1);
     if(pNode->error){
-        TreeNode *pTreeNode = var(layer + 1);
-        if(pTreeNode->error){
+        const pair<string, Type> &nextToken = getNextToken();
+        if(nextToken.second!=IDTYPE){
+            location--;
             const pair<string, Type> &token = getNextToken();
             if(token.second==NUMTYPE){
                 TreeNode *pNode1 = new TreeNode("NUM", layer + 1);
@@ -708,6 +724,8 @@ TreeNode * Grammar::factor(int layer) {
                 }
             }
         } else{
+            TreeNode *pTreeNode = new TreeNode("ID", layer + 1);
+            pTreeNode->value=nextToken.first;
             node->children.push_back(pTreeNode);
         }
     } else{
@@ -722,6 +740,9 @@ TreeNode *Grammar::call(int layer) {
     const pair<string, Type> &token = getNextToken();
     if(token.second==IDTYPE){
         const pair<string, Type> &nextToken = getNextToken();
+        TreeNode *pTreeNode = new TreeNode("ID", layer + 1);
+        pTreeNode->value=token.first;
+        node->children.push_back(pTreeNode);
         if(nextToken.first=="("){
             TreeNode *pNode = args(layer + 1);
             node->children.push_back(pNode);
