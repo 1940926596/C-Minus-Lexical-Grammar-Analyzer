@@ -1,7 +1,7 @@
 //
 // Created by 19409 on 2023/5/10.
 // Editor: CJR
-// very angry
+// very angry tnnd
 //
 #include "Grammar.h"
 
@@ -14,7 +14,7 @@ Grammar::Grammar() {
 Grammar::Grammar(vector<pair<string, Type>> storage) {
     storageCopy = storage;
     location =0;
-    for (int i ; i < storageCopy.size(); ++i) {cout<<storageCopy[i].first<<' '<<(Type)storageCopy[i].second<<endl;}
+    //for (int i ; i < storageCopy.size(); ++i) {cout<<storageCopy[i].first<<' '<<(Type)storageCopy[i].second<<endl;}
 }
 
 pair<string, Type> Grammar::getNextToken() {
