@@ -31,7 +31,7 @@ statement-list → statement statement-list | empty
 14.expression-stmt → expression; | ；
 15.selection-stmt → if (expression) statement | if (expression) statement else statement
 16.iteration-stmt → while (expression) statement
-17.return-stmt → return; | return expression
+17.return-stmt → return; | return expression;
 18.expression → var=expression | simple-expression
 19.var→ ID | ID[expression]
 20.simple-expression → additive-expression relop additive-expression |additive-expression
