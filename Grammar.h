@@ -13,6 +13,7 @@
 using namespace std;
 
 struct TreeNode {
+    //节点信息
     string label;
     string value;
     bool error;
@@ -31,15 +32,13 @@ public:
     int location;
 
     Grammar();
-
     Grammar(vector<pair<string, Type>> storage);
 
-    pair<string, Type> getNextToken();
-
     void error();
-    void readTokens();
+    pair<string, Type> getNextToken();
     void printTree(TreeNode* node);
 
+    void readTokens();
     TreeNode* program(int layer);
     TreeNode* declaration_list(int layer);
     TreeNode* declaration(int layer);
