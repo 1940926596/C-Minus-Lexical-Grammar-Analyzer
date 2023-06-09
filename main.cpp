@@ -13,7 +13,7 @@ int main() {
     }catch (const char* error){
         string s=error;
         if(s=="error"){
-            cout<<"输入有误，请重新输入";
+            cout<<"词法有误";
             return -1;
         }
     }
