@@ -12,7 +12,7 @@ int main() {
     }catch (const char* error){
         string s=error;
         if(s=="error"){
-            cout<<"´Ê·¨ÓÐÎó";
+            cout<<"è¯æ³•æœ‰è¯¯";
             return -1;
         }
     }
