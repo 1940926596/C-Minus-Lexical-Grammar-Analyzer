@@ -3,7 +3,6 @@
 
 using namespace std;
 
-
 int main() {
     string fileName="C:\\Code\\C++\\LexicalDFA\\test.text";
     Lexical lexical(fileName);
